@@ -1,26 +1,22 @@
 import React from "react";
-import './App.css'
-import Header from "./components/Header/Header";
-import Editing from "./components/Editing/Editing";
-import List from "./components/ListBirth/List";
-import Delete from "./components/Delete/Delete";
-import Changes from "./components/Changes/Changes";
-import Added from "./components/Added/Added";
-import {BrowserRouter, Route} from "react-router-dom";
+import useThemes from "./theme";
+import {ThemeProvider} from "@material-ui/core/styles";
+import 'react-toastify/dist/ReactToastify.css';
+import {BrowserRouter as Router} from 'react-router-dom';
+import Layout from "./Layout";
+import {ToastContainer} from "react-toastify";
 
-function App(props) {
-  return (
-          <div className="App">
-              <Header/>
-              <Editing/>
-              <div>
-                  {/*<Route path='/delete' component={Delete}/>
-                  <Route path='/changes' component={Changes}/>
-                  <Route path='/added' component={Added}/>*/}
-                  <List/>
-              </div>
-          </div>
-  );
+function App() {
+    return (
+        <div className="App">
+            <ThemeProvider theme={useThemes}>
+                <Router>
+                    <Layout/>
+                    <ToastContainer position="top-right"/>
+                </Router>
+            </ThemeProvider>
+        </div>
+    );
 }
 
 export default App;
